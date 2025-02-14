@@ -1,9 +1,9 @@
 import "../styles/counter.css";
 import friendlyTank from "../assets/friendly-tank.png";
-import friendlyDrone from "../assets/friendly-Drone.png";
+import friendlyDrone from "../assets/friendly-drone.png";
 import friendlySoldier from "../assets/friendly-soldier.png";
 import enemyTank from "../assets/enemy-tank.png";
-import enemyDrone from "../assets/enemy-Drone.png";
+import enemyDrone from "../assets/enemy-drone.png";
 import enemySoldier from "../assets/enemy-soldier.png";
 
 function CounterComponent() {
