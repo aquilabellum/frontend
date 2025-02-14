@@ -54,3 +54,5 @@ yarn-error.log*
 # Next.js build output
 .next
 
+# npm lock file
+package-lock.json
