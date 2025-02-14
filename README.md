@@ -3,3 +3,13 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/aquilabellum/frontend)
 
 AI-powered Backend by Aquila Bellum
+
+## Development
+During coding, please start the server with the following command:
+
+    npm run dev
+
+----
+
+Copyright (C) European Defense Tech Hackathon 2025
+
