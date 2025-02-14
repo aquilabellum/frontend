@@ -23,6 +23,7 @@ function MapComponent() {
           />
         ))}
       </div>
+      <div class="gray-overlay"></div>
 
       <div className="message-box">
         <div className="message">
