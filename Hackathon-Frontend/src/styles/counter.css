@@ -1,0 +1,35 @@
+.counter-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+.friendly-counter, .enemy-counter {
+    display: flex;
+    gap: 1rem; 
+}
+
+.friendly-container, .enemy-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+img {
+    width: 50px; 
+    height: auto;
+}
+
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px; 
+}
+
+.counter-enemy {
+    color: #840404;
+}
+
+.counter-friendly {
+    color: #9b9b9b;
+}

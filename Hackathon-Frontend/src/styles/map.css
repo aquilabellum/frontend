@@ -1,0 +1,35 @@
+.map-container {
+    position: relative; 
+    display: inline-block;
+}
+
+.map-image {
+    width: 100%; 
+    height: auto;
+    display: block; 
+}
+
+.message-box {
+    min-width: 200px;
+    position: absolute; 
+    bottom:  10px; 
+    right: 10px; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 2; 
+}
+
+.message-text {
+    margin-right: auto
+}
+
+.message {
+    display: flex;
+}
+
+.message-date {
+    margin-left: auto;
+}
