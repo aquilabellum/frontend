@@ -16,9 +16,9 @@ const entityIcons = {
   soldier: friendlySoldier,
 };
 
-function EntityInfo({ entity, onClose }) {
+function EntityInfo({ entity, onClose, isClosing }) {
   return (
-    <div className="entity-info-panel">
+    <div className={`entity-info-panel ${isClosing ? "sliding-out" : ""}`}>
       <div className="entity-info-header">
         <h3>{entity.type}</h3>
         <button className="close-button" onClick={onClose}>
@@ -71,9 +71,32 @@ function EntityInfo({ entity, onClose }) {
 
 function MapComponent({ entities = [] }) {
   const [selectedEntity, setSelectedEntity] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleMapClick = (e) => {
+    // Only close if clicking directly on the map container or overlay, not on entities
+    if (
+      e.target.classList.contains("map-container") ||
+      e.target.classList.contains("gray-overlay") ||
+      e.target.classList.contains("map-image")
+    ) {
+      setIsClosing(true);
+      // Wait for animation to complete before removing the component
+      setTimeout(() => {
+        setSelectedEntity(null);
+        setIsClosing(false);
+      }, 300); // Match this with CSS animation duration
+    }
+  };
+
+  const handleEntityClick = (entity, e) => {
+    e.stopPropagation(); // Prevent map click from triggering
+    setSelectedEntity(entity);
+    setIsClosing(false);
+  };
 
   return (
-    <div className="map-container">
+    <div className="map-container" onClick={handleMapClick}>
       <img src={mapImage} alt="Map" className="map-image" />
       <div className="map-wrapper">
         {entities.map((entity) => (
@@ -86,7 +109,7 @@ function MapComponent({ entities = [] }) {
               gridRow: entity.absoluteCoordinates[1] + 1,
             }}
             alt={entity.type}
-            onClick={() => setSelectedEntity(entity)}
+            onClick={(e) => handleEntityClick(entity, e)}
           />
         ))}
       </div>
@@ -94,7 +117,14 @@ function MapComponent({ entities = [] }) {
       {selectedEntity && (
         <EntityInfo
           entity={selectedEntity}
-          onClose={() => setSelectedEntity(null)}
+          onClose={() => {
+            setIsClosing(true);
+            setTimeout(() => {
+              setSelectedEntity(null);
+              setIsClosing(false);
+            }, 300);
+          }}
+          isClosing={isClosing}
         />
       )}
     </div>
