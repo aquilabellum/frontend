@@ -4,6 +4,7 @@ import MapComponent from "./components/MapComponent";
 import { WEBSOCKET_URL } from "./constants";
 import { io } from "socket.io-client";
 import { useCallback, useEffect, useState } from "react";
+import { BattlefieldTabs } from "./components/BattlefieldTabs/BattlefieldTabs";
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -11,6 +12,7 @@ function App() {
   const [events, setEvents] = useState([]);
   const [entities, setEntities] = useState([]);
   const [isStatusPanelCollapsed, setIsStatusPanelCollapsed] = useState(false);
+  const [activeTab, setActiveTab] = useState("events");
 
   // Keep only the last N events
   const MAX_EVENTS = 50;
@@ -178,27 +180,12 @@ function App() {
                 </span>
               </div>
             </div>
-            <div className="status-item">
-              <h3>Live Events</h3>
-              <div className="events-container">
-                {events.map((event) => (
-                  <div key={event.id} className="event-item">
-                    <div className="event-header">
-                      <span className="event-type">{event.type}</span>
-                      <span className="event-time">
-                        {new Date(event.timestamp).toLocaleTimeString()}
-                      </span>
-                    </div>
-                    <pre className="event-data">
-                      {JSON.stringify(event.data, null, 2)}
-                    </pre>
-                  </div>
-                ))}
-                {events.length === 0 && (
-                  <div className="no-events">No events received yet</div>
-                )}
-              </div>
-            </div>
+            <BattlefieldTabs
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              events={events}
+              entities={entities}
+            />
           </div>
         </div>
       </div>
