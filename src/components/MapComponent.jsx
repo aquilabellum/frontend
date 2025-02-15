@@ -85,7 +85,6 @@ function MapComponent({ entities = [] }) {
           />
         ))}
       </div>
-      {selectedEntity && <div className="gray-overlay"></div>}
       {selectedEntity && (
         <EntityInfo
           entity={selectedEntity}
