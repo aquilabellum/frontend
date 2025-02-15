@@ -17,10 +17,10 @@
 .overlay-image {
   width: clamp(
     20px,
-    2vw,
-    32px
-  ); /* Min 20px, preferred 2% of viewport width, max 32px */
-  height: clamp(20px, 2vw, 32px);
+    min(2vw, 2vh),
+    48px
+  ); /* Min 20px, preferred 2% of viewport size, max 48px */
+  height: clamp(20px, min(2vw, 2vh), 48px);
   cursor: pointer;
   transition: transform 0.2s ease;
   z-index: 1;
@@ -52,8 +52,15 @@
 
 @media screen and (min-width: 1920px) {
   .overlay-image {
-    width: 32px;
-    height: 32px;
+    width: clamp(32px, min(3vw, 3vh), 64px);
+    height: clamp(32px, min(3vw, 3vh), 64px);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .overlay-image {
+    width: clamp(48px, min(4vw, 4vh), 96px);
+    height: clamp(48px, min(4vw, 4vh), 96px);
   }
 }
 
