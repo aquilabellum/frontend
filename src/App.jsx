@@ -85,7 +85,7 @@ function App() {
       const event = {
         type,
         data,
-        timestamp: new Date().toISOString(),
+        timestamp: data.timestamp || new Date().toISOString(),
         id: Date.now() + Math.random(),
       };
       setEvents((prevEvents) => [event, ...prevEvents].slice(0, MAX_EVENTS));
@@ -95,8 +95,12 @@ function App() {
       addEvent("locationChanged", data);
       setEntities((prevEntities) => {
         return prevEntities.map((entity) => {
-          if (entity.id === data.entity_id) {
-            return { ...entity, absoluteCoordinates: data.absoluteCoordinates };
+          if (entity.entityId === data.entityId) {
+            return {
+              ...entity,
+              absoluteCoordinates: data.absoluteCoordinates,
+              updatedAt: new Date().toISOString(),
+            };
           }
           return entity;
         });
@@ -105,7 +109,15 @@ function App() {
 
     const handleSpawnEntity = (data) => {
       addEvent("spawnEntity", data);
-      setEntities((prev) => [...prev, data]);
+
+      const entity = data.entity;
+      if (!entity.createdAt || !entity.updatedAt) {
+        const now = new Date().toISOString();
+        entity.createdAt = entity.createdAt || now;
+        entity.updatedAt = entity.updatedAt || now;
+      }
+
+      setEntities((prev) => [...prev, entity]);
     };
 
     const eventHandlers = {
@@ -140,7 +152,15 @@ function App() {
         const response = await fetch(`${WEBSOCKET_URL}/api/initialState`);
         const data = await response.json();
         console.log("Initial state:", data);
-        setEntities(data.entities || []);
+
+        const now = new Date().toISOString();
+        const entitiesWithTimestamps = data.entities.map((entity) => ({
+          ...entity,
+          createdAt: entity.createdAt || now,
+          updatedAt: entity.updatedAt || now,
+        }));
+
+        setEntities(entitiesWithTimestamps);
       } catch (error) {
         console.error("Failed to fetch initial state:", error);
       }

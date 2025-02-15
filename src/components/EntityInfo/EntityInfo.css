@@ -120,3 +120,16 @@
 .threat-high {
   color: #f44336;
 }
+
+.entity-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.entity-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

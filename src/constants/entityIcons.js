@@ -1,13 +1,17 @@
-import friendlyDrone from "../assets/friendly-drone.png";
+import { EntitiesEnum } from "./enums";
+import dartDeploymentDroneIcon from "../assets/dart-deployment-drone.png";
 import dartIcon from "../assets/dart-icon.svg";
 import receiverDroneIcon from "../assets/receiver-drone.png";
-import enemyTank from "../assets/enemy-tank.png";
-import friendlySoldier from "../assets/friendly-soldier.png";
+// import enemyTank from "../assets/enemy-tank.png";
+// import friendlySoldier from "../assets/friendly-soldier.png";
+// import jammerIcon from "../assets/jammer-icon.png";
 
+// Map entity types to their corresponding icon assets
 export const entityIcons = {
-  dartDeploymentDrone: friendlyDrone,
-  dataReceiverDrone: receiverDroneIcon,
-  dart: dartIcon,
-  tank: enemyTank,
-  soldier: friendlySoldier,
+  [EntitiesEnum.DART_DEPLOYMENT_DRONE]: dartDeploymentDroneIcon,
+  [EntitiesEnum.DATA_RECEIVER_DRONE]: receiverDroneIcon,
+  [EntitiesEnum.DART]: dartIcon,
+  // [EntitiesEnum.TANK]: enemyTank,
+  // [EntitiesEnum.SOLDIER]: friendlySoldier,
+  // [EntitiesEnum.JAMMER]: jammerIcon,
 };

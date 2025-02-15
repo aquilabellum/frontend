@@ -34,7 +34,7 @@ function MapComponent({ entities = [] }) {
       <div className="map-wrapper">
         {entities.map((entity) => (
           <img
-            key={entity.id}
+            key={entity.entityId}
             src={entityIcons[entity.type]}
             className="overlay-image"
             style={{

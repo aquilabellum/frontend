@@ -19,9 +19,7 @@ function HeaderComponent({ isConnected }) {
           margin: "0 auto",
         }}
       >
-        <h1 style={{ margin: 0, color: "#ffffff" }}>
-          Battlefield Management System
-        </h1>
+        <h1 style={{ margin: 0, color: "#ffffff" }}>DART Mission Planner</h1>
       </div>
     </header>
   );
