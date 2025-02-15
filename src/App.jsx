@@ -1,7 +1,7 @@
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
 import MapComponent from "./components/MapComponent";
-import { WEBSOCKET_URL } from "./constants";
+import { WEBSOCKET_URL } from "./constants/variables";
 import { io } from "socket.io-client";
 import { useCallback, useEffect, useState } from "react";
 import { BattlefieldTabs } from "./components/BattlefieldTabs/BattlefieldTabs";
@@ -17,6 +17,7 @@ function App() {
   // Keep only the last N events
   const MAX_EVENTS = 50;
 
+  // useCallback to subscribe to a topic
   const subscribe = useCallback(
     (topic) => {
       if (socket?.connected) {
@@ -27,6 +28,7 @@ function App() {
     [socket]
   );
 
+  // useCallback to unsubscribe from a topic
   const unsubscribe = useCallback(
     (topic) => {
       if (socket?.connected) {
@@ -37,6 +39,7 @@ function App() {
     [socket]
   );
 
+  // useEffect to connect to the socket
   useEffect(() => {
     const newSocket = io(WEBSOCKET_URL, {
       reconnection: true,
@@ -49,11 +52,13 @@ function App() {
 
     return () => {
       if (newSocket) {
+        console.log("Disconnecting socket");
         newSocket.disconnect();
       }
     };
   }, []);
 
+  // useEffect to handle the socket connection
   useEffect(() => {
     if (!socket) return;
 
@@ -128,6 +133,7 @@ function App() {
     };
   }, [socket, subscribe]);
 
+  // useEffect to fetch the initial state
   useEffect(() => {
     const fetchInitialState = async () => {
       try {
