@@ -117,6 +117,10 @@
   color: #4caf50;
 }
 
+.status-planned {
+  color: #ffa726; /* Orange color for planned status */
+}
+
 .threat-high {
   color: #f44336;
 }

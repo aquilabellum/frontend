@@ -2,12 +2,11 @@ import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
 import MapComponent from "./components/MapComponent";
 import { WEBSOCKET_URL } from "./constants/variables";
-import { io } from "socket.io-client";
+import { socket } from "./socket";
 import { useCallback, useEffect, useState } from "react";
 import { BattlefieldTabs } from "./components/BattlefieldTabs/BattlefieldTabs";
 
 function App() {
-  const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [events, setEvents] = useState([]);
   const [entities, setEntities] = useState([]);
@@ -18,15 +17,12 @@ function App() {
   const MAX_EVENTS = 50;
 
   // useCallback to subscribe to a topic
-  const subscribe = useCallback(
-    (topic) => {
-      if (socket?.connected) {
-        console.log(`Subscribing to ${topic}`);
-        socket.emit("subscribe", [topic]);
-      }
-    },
-    [socket]
-  );
+  const subscribe = useCallback((topic) => {
+    if (socket.connected) {
+      console.log(`Subscribing to ${topic}`);
+      socket.emit("subscribe", [topic]);
+    }
+  }, []);
 
   // useCallback to unsubscribe from a topic
   const unsubscribe = useCallback(
@@ -38,25 +34,6 @@ function App() {
     },
     [socket]
   );
-
-  // useEffect to connect to the socket
-  useEffect(() => {
-    const newSocket = io(WEBSOCKET_URL, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-      reconnectionDelayMax: 5000,
-      reconnectionAttempts: Infinity,
-    });
-
-    setSocket(newSocket);
-
-    return () => {
-      if (newSocket) {
-        console.log("Disconnecting socket");
-        newSocket.disconnect();
-      }
-    };
-  }, []);
 
   // useEffect to handle the socket connection
   useEffect(() => {
