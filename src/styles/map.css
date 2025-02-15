@@ -15,11 +15,20 @@
 }
 
 .overlay-image {
-  width: 24px;
-  height: 24px;
+  width: clamp(
+    20px,
+    2vw,
+    32px
+  ); /* Min 20px, preferred 2% of viewport width, max 32px */
+  height: clamp(20px, 2vw, 32px);
   cursor: pointer;
   transition: transform 0.2s ease;
   z-index: 1;
+}
+
+/* Adjust hover scale based on size */
+.overlay-image:hover {
+  transform: scale(1.15);
 }
 
 .overlay-image.planned {
@@ -30,7 +39,22 @@
 
 .overlay-image.planned:hover {
   opacity: 0.8;
-  transform: scale(1.1);
+  transform: scale(1.15);
+}
+
+/* Add media queries for more specific control */
+@media screen and (max-width: 768px) {
+  .overlay-image {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .overlay-image {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .entity-info-panel {
