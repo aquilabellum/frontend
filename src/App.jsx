@@ -8,9 +8,7 @@ function App() {
  return(
     <div>
       <HeaderComponent></HeaderComponent>
-    <MapComponent></MapComponent>
-    <CounterComponent></CounterComponent>
-    <TimelineComponent></TimelineComponent>
+      <MapComponent></MapComponent>
     </div>
  ) 
 }

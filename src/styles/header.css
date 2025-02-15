@@ -5,3 +5,19 @@
     margin: auto;
 }
 
+.region-section {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+}
+
+.region-section > * {
+    border-right: 1px solid black; 
+}
+
+.region-section > *:nth-child(5n) {
+    border-right: none;
+}
+
+.region {
+    text-align: center;
+}
