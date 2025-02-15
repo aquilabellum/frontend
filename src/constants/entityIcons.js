@@ -1,6 +1,6 @@
 import friendlyDrone from "../assets/friendly-drone.png";
 import dartIcon from "../assets/dart-icon.svg";
-import receiverDroneIcon from "../assets/friendly-drone.png";
+import receiverDroneIcon from "../assets/receiver-drone.png";
 import enemyTank from "../assets/enemy-tank.png";
 import friendlySoldier from "../assets/friendly-soldier.png";
 
