@@ -15,6 +15,15 @@ function EntityInfo({ entity, onClose, isClosing }) {
     await generateSpeech(getMissionDescription(entity));
   };
 
+  const getStatusDisplay = (status) => {
+    const statusMap = {
+      upToBePlanted: "Up to Be Planted",
+      active: "Active",
+      // Add other status mappings as needed
+    };
+    return statusMap[status] || status;
+  };
+
   const renderEntitySpecificInfo = () => {
     switch (entity.type) {
       case "dataReceiverDrone":
@@ -51,7 +60,15 @@ function EntityInfo({ entity, onClose, isClosing }) {
           label="Position"
           value={`[${entity.absoluteCoordinates.join(", ")}]`}
         />
-        <InfoRow label="Status" value="Active" className="status-active" />
+        <InfoRow
+          label="Status"
+          value={getStatusDisplay(entity.status)}
+          className={
+            entity.status === "upToBePlanted"
+              ? "status-planned"
+              : "status-active"
+          }
+        />
         <InfoRow
           label="Last Status Update at"
           value={formatTimestamp(entity.updatedAt)}
