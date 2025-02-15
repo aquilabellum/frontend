@@ -1,6 +1,7 @@
 import "../styles/header.css";
 import React, { useState, useEffect } from "react";
 import { WEBSOCKET_URL } from "../constants/variables";
+import { AudioManager } from "../utils/audioManager";
 
 function HeaderComponent({ isConnected }) {
   const [audioData, setAudioData] = useState(null);
@@ -17,6 +18,11 @@ function HeaderComponent({ isConnected }) {
   }, [audioData]);
 
   const generateSpeech = async (text) => {
+    // Don't generate new speech if audio is already playing
+    if (AudioManager.isPlaying()) {
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await fetch(`${WEBSOCKET_URL}/api/textToSpeech`, {
@@ -32,7 +38,8 @@ function HeaderComponent({ isConnected }) {
       }
 
       const data = await response.json();
-      setAudioData(`data:audio/mp3;base64,${data.audio}`);
+      const audio = new Audio(`data:audio/mp3;base64,${data.audio}`);
+      await AudioManager.play(audio);
     } catch (error) {
       console.error("Error generating speech:", error);
     } finally {

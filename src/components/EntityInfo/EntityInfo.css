@@ -133,3 +133,51 @@
   height: 24px;
   object-fit: contain;
 }
+
+.mission-description {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid #4caf50;
+}
+
+.mission-description p {
+  margin: 0;
+  line-height: 1.5;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voice-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.voice-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.voice-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.voice-button.playing {
+  color: #4caf50;
+}
