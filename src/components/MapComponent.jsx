@@ -31,15 +31,17 @@ function MapComponent({ entities = [] }) {
   return (
     <div className="map-container" onClick={handleMapClick}>
       <img src={mapImage} alt="Map" className="map-image" />
-      <div className="map-wrapper">
+      <div>
         {entities.map((entity) => (
           <img
-            key={entity.id}
+            key={entity.entityId}
             src={entityIcons[entity.type]}
             className="overlay-image"
             style={{
-              gridColumn: entity.absoluteCoordinates[0] + 1,
-              gridRow: entity.absoluteCoordinates[1] + 1,
+              position: "absolute",
+              left: `${((entity.absoluteCoordinates[0] - 0) / (600 - 100)) * 100}%`,
+              bottom: `${((entity.absoluteCoordinates[1] - 0) / (300 - 100)) * 100}%`,
+            transform: "translate(-50%, 50%)",
             }}
             alt={entity.type}
             onClick={(e) => handleEntityClick(entity, e)}

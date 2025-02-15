@@ -79,8 +79,8 @@ export function BattlefieldTabs({ activeTab, onTabChange, events, entities }) {
               <span className="asset-count threat">{assetCounts.tanks}</span>
             </div>
             <div className="asset-item">
-              <span className="asset-label">Friendly Soldiers:</span>
-              <span className="asset-count">{assetCounts.soldiers}</span>
+              <span className="asset-label">Enemy Soldiers:</span>
+              <span className="asset-count threat">{assetCounts.soldiers}</span>
             </div>
           </div>
         )}

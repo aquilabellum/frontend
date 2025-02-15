@@ -40,9 +40,12 @@
 }
 
 .pull-indicator {
-  width: 8px;
-  height: 8px;
-  background-color: #4caf50;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   position: relative;
 }
@@ -86,18 +89,21 @@
 }
 
 .pull-time-indicator {
-  width: 8px;
-  height: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
-  background-color: #888888;
 }
 
 .pull-time-slot.past .pull-time-indicator {
-  background-color: #666666;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .pull-time-slot.upcoming .pull-time-indicator {
-  background-color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
 }
 
 .pull-time-slot.current {
@@ -106,20 +112,8 @@
 }
 
 .pull-time-slot.current .pull-time-indicator {
-  background-color: #4caf50;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(76, 175, 80, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-  }
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .pull-time-text {
@@ -131,4 +125,67 @@
   font-size: 0.8rem;
   color: #4caf50;
   margin-left: auto;
+}
+
+.status-icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon-bg {
+  position: absolute;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.status-icon {
+  position: relative;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.status-icon-container.success .status-icon {
+  color: #00e676;
+}
+
+.status-icon-container.failure .status-icon {
+  color: #ff1744;
+}
+
+.status-icon-container.pending .status-icon {
+  color: #ffab40;
+}
+
+.timeline-hour.current-hour.pull-scheduled .status-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+    transform: scale(1.1);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.4));
+    transform: scale(1);
+  }
+}
+
+.pull-time-slot:hover .status-icon,
+.timeline-hour:hover .status-icon {
+  transform: scale(1.1);
+}
+
+.timeline-hour.current-hour .pull-indicator,
+.pull-time-slot.current .pull-time-indicator {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
