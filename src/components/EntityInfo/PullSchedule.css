@@ -1,0 +1,134 @@
+.schedule-timeline {
+  position: relative;
+  padding: 20px 0;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.timeline-hour {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  padding: 0 5px;
+}
+
+.hour-label {
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.hour-marker {
+  position: relative;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.pull-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  position: relative;
+}
+
+.timeline-hour.current-hour .hour-label {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.timeline-hour.pull-scheduled .pull-indicator {
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.timeline-hour.current-hour.pull-scheduled .pull-indicator {
+  animation: pulse 2s infinite;
+}
+
+.scheduled-pulls {
+  margin-top: 2rem;
+}
+
+.scheduled-pulls h5 {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.pull-times-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 0.5rem;
+}
+
+.pull-time-slot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.pull-time-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #888888;
+}
+
+.pull-time-slot.past .pull-time-indicator {
+  background-color: #666666;
+}
+
+.pull-time-slot.upcoming .pull-time-indicator {
+  background-color: #4caf50;
+}
+
+.pull-time-slot.current {
+  background-color: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.pull-time-slot.current .pull-time-indicator {
+  background-color: #4caf50;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.pull-time-text {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.pull-time-status {
+  font-size: 0.8rem;
+  color: #4caf50;
+  margin-left: auto;
+}
