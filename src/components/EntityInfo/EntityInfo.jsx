@@ -7,7 +7,7 @@ function EntityInfo({ entity, onClose, isClosing }) {
   return (
     <div className={`entity-info-panel ${isClosing ? "sliding-out" : ""}`}>
       <div className="entity-info-header">
-        <h3>{entity.type}</h3>
+        <h2>{entity.name || "Unknown Entity"}</h2>
         <button className="close-button" onClick={onClose}>
           &times;
         </button>

@@ -45,6 +45,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.entity-info-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
 .entity-info-header h3 {
   margin: 0;
   font-size: 1.2rem;
