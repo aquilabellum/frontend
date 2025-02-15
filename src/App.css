@@ -19,14 +19,75 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: margin-right 0.3s ease;
 }
 
 .status-panel {
   width: 300px;
   background-color: #2a2a2a;
   border-radius: 8px;
-  padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.status-panel.collapsed {
+  width: 50px;
+  padding: 0;
+}
+
+.status-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #333333;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.collapse-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.collapse-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-panel-content {
+  padding: 1rem;
+  overflow: hidden;
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.status-panel.collapsed .status-panel-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status-panel.collapsed .status-panel-header h2 {
+  display: none;
 }
 
 .status-item {
@@ -34,6 +95,7 @@
   padding: 0.5rem;
   background-color: #333333;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .connection-status {
