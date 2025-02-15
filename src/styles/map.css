@@ -1,11 +1,16 @@
 .map-container {
   position: relative;
-  display: inline-block;
+  width: 100%;
+  height: calc(
+    100vh - 80px - 2rem
+  ); /* Subtract header height and total vertical padding */
+  overflow: hidden;
 }
 
 .map-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; /* This will maintain aspect ratio while covering container */
   display: block;
 }
 

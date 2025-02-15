@@ -9,8 +9,10 @@
 .main-content {
   display: flex;
   flex: 1;
-  padding: 1rem;
   gap: 1rem;
+  height: calc(100vh - 64px); /* Adjust based on header height */
+  overflow: hidden;
+  padding: 1rem; /* Add equal padding around all content */
 }
 
 .map-container {
