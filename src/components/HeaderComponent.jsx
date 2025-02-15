@@ -1,6 +1,5 @@
 import "../styles/header.css";
 import React, { useState } from "react";
-import { AudioButton } from "./common/AudioButton";
 import { generateSpeech } from "../utils/textToSpeech";
 import { WELCOME_MESSAGE } from "../constants/messages";
 

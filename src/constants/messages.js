@@ -1,0 +1,1 @@
+export const WELCOME_MESSAGE = `Welcome to DART Mission Planner. This platform allows you to monitor drones, track deployments, and manage battlefield assets in real-time. You can view entity locations on the map, check drone schedules, and monitor system status.`;
