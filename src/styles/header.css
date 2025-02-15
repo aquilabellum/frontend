@@ -1,23 +1,98 @@
 .logo {
-    width: 20rem;
-    height: 3rem;
-    display: flex;
-    margin: auto;
+  width: 20rem;
+  height: 3rem;
+  display: flex;
+  margin: auto;
 }
 
 .region-section {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
 }
 
 .region-section > * {
-    border-right: 1px solid black; 
+  border-right: 1px solid black;
 }
 
 .region-section > *:nth-child(5n) {
-    border-right: none;
+  border-right: none;
 }
 
 .region {
-    text-align: center;
+  text-align: center;
+}
+
+.app-header {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.guide-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.guide-button:hover {
+  background-color: #45a049;
+}
+
+.guide-button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.status-dot.connected {
+  background-color: #4caf50;
+}
+
+.status-dot.disconnected {
+  background-color: #f44336;
+}
+
+.status-text {
+  color: #ffffff;
+  font-size: 0.9rem;
 }
