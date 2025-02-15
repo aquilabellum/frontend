@@ -1,5 +1,4 @@
 import "../styles/header.css";
-import logo from "../../public/logo.jpg";
 import React from "react";
 
 function HeaderComponent({ isConnected }) {
