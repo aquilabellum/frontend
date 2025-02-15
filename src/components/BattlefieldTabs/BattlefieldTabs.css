@@ -1,0 +1,68 @@
+.battlefield-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: #888888;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  color: #ffffff;
+}
+
+.tab-button.active {
+  color: #4caf50;
+  border-bottom-color: #4caf50;
+}
+
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.assets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.asset-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.asset-label {
+  color: #888888;
+  font-size: 0.9rem;
+}
+
+.asset-count {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #4caf50;
+}
+
+.asset-count.threat {
+  color: #f44336;
+}
