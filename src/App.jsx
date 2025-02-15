@@ -84,10 +84,6 @@ function App() {
       socket.on(event, handler);
     });
 
-    socket.onAny((event, ...args) => {
-      console.log(`Received event: ${event}`, args);
-    });
-
     return () => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
