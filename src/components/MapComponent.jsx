@@ -75,8 +75,8 @@ function MapComponent({ entities = [] }) {
             }`}
             style={{
               position: "absolute",
-              left: `${(entity.absoluteCoordinates[0] / 600) * 100}%`,
-              bottom: `${(entity.absoluteCoordinates[1] / 300) * 100}%`,
+              left: `${(entity.absoluteCoordinates[0] / 500) * 100}%`,
+              bottom: `${(entity.absoluteCoordinates[1] / 281) * 100}%`,
               transform: "translate(-50%, 50%)",
               opacity: entity.status === "upToBePlanted" ? 0.5 : 1,
             }}
