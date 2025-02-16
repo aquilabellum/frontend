@@ -84,6 +84,7 @@ function App() {
       });
     };
 
+
     const handleSpawnEntity = (data) => {
       addEvent("spawnEntity", data);
 
@@ -97,10 +98,22 @@ function App() {
       setEntities((prev) => [...prev, entity]);
     };
 
+    const handleDectection = (data) => {
+      addEvent("detection", data);
+
+      const entity = data.entity;
+      if (!entity.createdAt || !entity.updatedAt) {
+        const now = new Date().toISOString();
+        entity.createdAt = entity.createdAt || now;
+        entity.updatedAt = entity.updatedAt || now;
+      }
+
+      setEntities((prev) => [...prev, entity]);
+    }
     const eventHandlers = {
       dartStatusUpdate: (data) => addEvent("dartStatusUpdate", data),
       spawnEntity: handleSpawnEntity,
-      detection: (data) => addEvent("detection", data),
+      detection: (data) => handleDectection,
       locationChanged: handleLocationChanged,
       supportNeeded: (data) => addEvent("supportNeeded", data),
     };
