@@ -7,4 +7,5 @@ export const EntitiesEnum = {
   DART_DEPLOYMENT_DRONE: "dartDeploymentDrone",
   JAMMER: "jammer",
   DART: "dart",
+  HELICOPTER: "helicopter",
 };

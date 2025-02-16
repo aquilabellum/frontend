@@ -102,18 +102,13 @@ function App() {
       addEvent("detection", data);
 
       const entity = data.entity;
-      if (!entity.createdAt || !entity.updatedAt) {
-        const now = new Date().toISOString();
-        entity.createdAt = entity.createdAt || now;
-        entity.updatedAt = entity.updatedAt || now;
-      }
 
       setEntities((prev) => [...prev, entity]);
     }
     const eventHandlers = {
       dartStatusUpdate: (data) => addEvent("dartStatusUpdate", data),
       spawnEntity: handleSpawnEntity,
-      detection: (data) => handleDectection,
+      detection: handleDectection,
       locationChanged: handleLocationChanged,
       supportNeeded: (data) => addEvent("supportNeeded", data),
     };
